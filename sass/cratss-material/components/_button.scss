@@ -1,0 +1,74 @@
+@use "../cratss-core.scss" as core;
+@use "../mixins/" as mixins;
+@use "../cratss-minimal/sass/cratss-minimal/mixin/prefixer";
+@use "../cratss-minimal/sass/cratss-minimal/mixin/elevation";
+@use "../cratss-minimal/sass/cratss-minimal/mixin/coloring";
+
+%buttonBase{
+    
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    transition: all 50ms;
+    outline: none;
+    cursor: pointer;
+    
+    &,&:active,&:focus{
+        outline: none;
+    }
+
+    &:disabled{
+        cursor: default;
+        opacity: 0.3;
+    }
+
+    
+}
+
+
+  
+$colorGroup:"themeColor" "stateColor";
+@each $section in $colorGroup {
+    
+    @include core.forTypesInThemes($section) using ($theme,$type){
+        
+        .btn{
+            @extend %buttonBase;    
+            @include mixins.borderRadius($theme,"sm");
+            
+            &-pushable{
+                transition: all 0.05s;
+                @include prefixer.prefix("transform","scale(1)");
+            
+                &:not(:disabled):hover{
+                    @include elevation.elevation(2,core.get($theme,"otherColor","shadow"));
+                    @include prefixer.prefix("transform","scale(1.05)");
+                }
+                
+                &:not(:disabled):active{
+                    @include elevation.elevation(1,core.get($theme,"otherColor","shadow"));
+                    @include prefixer.prefix("transform","scale(0.99)");
+                }
+            }
+        
+            &[colorMode="filled"][color=#{$type}]{
+                border:none;
+            }
+        
+            &[colorMode="filled-soft"][color=#{$type}]{
+                border:none;
+                &:active:not(:disabled){
+                    @include coloring.fill($type,$section,$theme);        
+                }
+            }
+            
+            &[colorMode="outline"][color=#{$type}]{
+                color:core.get("default","themeColor",$type);
+                &:active:not(:disabled){
+                    @include coloring.fill($type,$section,$theme);        
+                }
+            }
+        }
+    }
+};
+
+

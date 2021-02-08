@@ -1,0 +1,65 @@
+@use '../cratss-core' as core;
+
+
+@include core.forAllThemes using ($theme){
+    .radiobuton{
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        height:1em;
+        width:1em;
+    
+        &-input{
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            z-index: 1;
+    
+        }
+    
+        &-box{
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom: 0;
+            border: solid calc(1em * 0.1) core.get($theme,'themeColor',"neutro");
+            border-radius: 100px;
+    
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+        }
+    
+        &:hover  &-box{
+            border: solid 1px darken($color: core.get($theme,'themeColor',"neutro") , $amount: 30%) ;
+        }
+    
+    
+        &-input:checked ~ &-box{
+            border-color: core.get($theme,'themeColor',"secondary");
+            
+            &:after{
+                display: block;
+                left: 50%;
+                top: 50%;
+                width: 0.5em;
+                height: 0.5em;
+                background-color: core.get($theme,'themeColor',"secondary");
+                border-radius: 100px;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: translate(-50%,-50%);
+    
+            }
+        }
+    }
+}

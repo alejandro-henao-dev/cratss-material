@@ -1,0 +1,14 @@
+@use "../cratss-core" as cratssCore;
+
+@use "../cratss-minimal/sass/cratss-minimal/mixin/" as cratssMinimalMixin;
+
+@import "../mixins/borderRadius";
+
+@include cratssCore.forAllThemes using ( $theme ){
+    .card{
+        border-radius: cratssCore.get($theme,"radiusShape","medium");
+        @include cratssMinimalMixin.elevation(2);
+        padding: 1rem;
+    }
+}
+

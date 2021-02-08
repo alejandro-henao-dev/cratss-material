@@ -1,0 +1,66 @@
+@use '../cratss-core' as core;
+@use "../cratss-minimal/sass/cratss-minimal/mixin/" as minimalMixins;
+
+@include core.forAllThemes using ($theme){
+    
+    .checkbox{
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        @include minimalMixins.prefix("user-select",none);
+        height:1em;
+        width:1em;
+
+        &-input{
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            z-index: 1;
+
+        }
+
+        &-box{
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom: 0;
+            border: solid calc(1em * 0.1) core.get($theme,'themeColor',"neutro");
+            border-radius:2px;
+
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+        }
+
+        &:hover  &-box{
+            border: solid 1px darken($color: core.get($theme,'themeColor',"neutro") , $amount: 30%) ;
+        }
+
+
+        &-input:checked ~ &-box{
+            border-color: core.get($theme,'themeColor',"secondary");
+            background-color: core.get($theme,'themeColor',"secondary");
+            pointer-events: none;
+            
+            &:after{
+                display: block;
+                left: 30%;
+                top: 0.25%;
+                width: 0.25em;
+                height: 0.6em;
+                stroke-linecap: round;
+                border: solid  core.get($theme,'on-themeColor',"secondary");
+                border-width: 0 calc(1em * 0.13) calc(1em * 0.13) 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+
+            }
+        }
+    }
+}

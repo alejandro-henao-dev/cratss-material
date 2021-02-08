@@ -1,0 +1,23 @@
+@use '../cratss-core.scss' as core;
+
+
+
+@mixin borderRadius($theme,$size){
+    @if $size == "sm"{
+        @include border-radius-sm($theme);
+    }@else if $size == "md"{
+        @include border-radius-md($theme);
+    }@else if $size == "lg"{
+        @include border-radius-lg($theme);
+    }
+}
+
+@mixin border-radius-sm($theme){
+    border-radius: core.get($theme,"radiusShape","small");
+}
+@mixin border-radius-md($theme){
+         border-radius: core.get($theme,"radiusShape","medium");
+}
+@mixin border-radius-lg($theme){
+    border-radius: core.get($theme,"radiusShape","big");
+}

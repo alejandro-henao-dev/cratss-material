@@ -1,0 +1,89 @@
+@use "../cratss-core" as core;
+@use "../cratss-minimal/sass/cratss-minimal/mixin/prefixer";
+
+%dynamic-input-base{
+    position: relative;
+    display: inline-block;
+
+    input{
+        &::placeholder{
+            opacity: 0;
+        }
+        &:focus{
+            &::placeholder{
+                color:gray;
+                opacity:1;
+            }
+        }
+    }
+    
+    label{
+        position: absolute;
+        transition: all 0.2s;
+        pointer-events:none;
+    }
+
+    input:placeholder-shown{
+        & ~ label{
+            bottom: 50%;
+            left:1rem;
+            @include prefixer.prefix("transform","translateY(50%)");
+        }
+    }
+    textarea:placeholder-shown{
+        & ~ label{
+            bottom: unset;
+            top: 0%;
+            left:1rem;
+            @include prefixer.prefix("transform","translateY(50%)");
+        }
+    }
+
+    &-top{
+        margin-top:1.7rem;
+        input:focus, input:not(:placeholder-shown){
+            &~label{
+                bottom:100%;
+                left:0.1rem;
+                background: unset;
+                font-size:0.8rem;
+                @include prefixer.prefix("transform", "translateY(-10%)");
+            }
+        }
+    }
+}
+
+@include core.forAllThemes using ($theme){
+    .input-dinamyc{
+        @extend %dynamic-input-base;
+
+        background-color: core.get($theme,"surfaceColor");
+
+        &-middle{
+            margin-top:1rem;
+            input:focus, input:not(:placeholder-shown){
+                &~label{
+                    top:unset;
+                    bottom:100%;
+                    left:0.2rem;
+    
+                    padding: 0 3px;
+                    font-size: 0.8rem;
+                    @include prefixer.prefix("transform","translateY(50%)");
+                }
+            }
+            textarea:focus, textarea:not(:placeholder-shown){
+                &~label{
+                    top:-0.1rem;
+                    left:0.2rem;
+                    padding: 0 3px;
+                    font-size: 0.8rem;
+                    @include prefixer.prefix("transform","translateY(0%)");
+                }
+            }
+            
+        }
+    }
+  
+}
+
