@@ -1,7 +1,7 @@
 {
   "name": "cratss-material",
   "version": "0.0.1",
-  "description": "material design styles bases on cratss-minimal",
+  "description": "material design theme based on cratss-minimal",
   "main": "sass/crats-material/index.scss",
   "scripts": {
     "dev": "sass  --watch sass/cratss-material:dist "
