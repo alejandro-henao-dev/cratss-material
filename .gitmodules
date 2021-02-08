@@ -1,0 +1,3 @@
+[submodule "sass/cratss-material/cratss-minimal"]
+	path = sass/cratss-material/cratss-minimal
+	url = https://github.com/rantasma/cratss-minimal.git

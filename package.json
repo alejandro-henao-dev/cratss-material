@@ -1,0 +1,19 @@
+{
+  "name": "cratss-material",
+  "version": "0.0.1",
+  "description": "material design styles bases on cratss-minimal",
+  "main": "sass/crats-material/index.scss",
+  "scripts": {
+    "dev": "sass  --watch sass/cratss-material:dist "
+  },
+  "keywords": [
+    "sass",
+    "cratss",
+    "cratss-minimal"
+  ],
+  "author": "RAT",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.32.5"
+  }
+}
