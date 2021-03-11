@@ -73,7 +73,7 @@ $colorGroup:"themeColor" "stateColor";
             }
         
             &[colorMode="filled-soft"][color=#{$type}]{
-                @include localMixins.borderRadius("sm");
+                @include localMixins.borderRadius($theme,"sm");
                 &:placeholder-shown{
                     border-color: transparent;
                 }
@@ -89,7 +89,7 @@ $colorGroup:"themeColor" "stateColor";
             }
             
             &[colorMode="outline"][color=#{$type}]{
-                @include localMixins.borderRadius("sm");
+                @include localMixins.borderRadius($theme,"sm");
                 &.start-neutro:not(:hover):not(:focus):placeholder-shown{
                     @include coloring.outline("neutro","otherColor",$theme)
                 }

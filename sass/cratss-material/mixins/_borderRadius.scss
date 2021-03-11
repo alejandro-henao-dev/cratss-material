@@ -2,7 +2,7 @@
 
 
 
-@mixin borderRadius($theme,$size){
+@mixin borderRadius($theme:"default",$size){
     @if $size == "sm"{
         @include border-radius-sm($theme);
     }@else if $size == "md"{

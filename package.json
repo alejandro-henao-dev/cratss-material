@@ -1,6 +1,6 @@
 {
   "name": "cratss-material",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "material design theme based on cratss-minimal",
   "main": "sass/crats-material/index.scss",
   "scripts": {
