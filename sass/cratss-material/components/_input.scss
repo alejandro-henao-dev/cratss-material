@@ -50,7 +50,9 @@ $colorGroup:"themeColor" "stateColor";
                     color: darken(core.get($theme,"otherColor","neutro"),40%);
                 }
             }
-
+            &[activecolor=#{$type}]:focus,&[activecolor=#{$type}]:active{
+                border-color: core.get($theme,"themeColor",$type) !important;
+            }
             &[color=#{$type}]{
                 border-bottom-color: core.get($theme,$section,$type);
             }
@@ -59,9 +61,11 @@ $colorGroup:"themeColor" "stateColor";
                 background-color: transparent;
                 color:core.get($theme,"on-surfaceColor");
                 border-color: core.get($theme,"otherColor","neutro");
+
                 &:hover{
                     border-color: darken(core.get($theme,"otherColor","neutro"),40%);
                 }
+
                 &:focus,&:not(:placeholder-shown){
                     border-color: core.get($theme,$section,$type);
                     &~label{
