@@ -43,6 +43,7 @@ $colorGroup:"themeColor" "stateColor";
     @include core.forTypesInThemes($section) using ($theme,$type){
 
         .input{
+            @extend %inputBase;
             &:not(:disabled):hover{
                 border-color: darken(core.get($theme,"otherColor","neutro"),40%);
                 &~label{
