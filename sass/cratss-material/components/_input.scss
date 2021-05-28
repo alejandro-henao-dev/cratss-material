@@ -53,6 +53,9 @@ $colorGroup:"themeColor" "stateColor";
             &[activecolor=#{$type}]:focus,&[activecolor=#{$type}]:active{
                 border-color: core.get($theme,"themeColor",$type) !important;
             }
+            &:focus ~ label[activecolor=#{$type}],&:active~label[activecolor=#{$type}]{
+                color: core.get($theme,"themeColor",$type) !important;
+            }
             &[color=#{$type}]{
                 border-bottom-color: core.get($theme,$section,$type);
             }
